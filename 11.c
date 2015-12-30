@@ -31,30 +31,91 @@ int main(void){
 		d=0,
 		x=0,
 		y=0,
-		max = 20-3,
+		max = 20,
 		rs = 0,
-		tmp = 0;
+		tmp = 0,
+		i = 0,
+		l = 0;
 	while(x<max){
 		while(y<max){
 			a = b = c = d = 0;
+			l++;
 			a = arr[x][y];
-			b = arr[x+1][y+1];
-			c = arr[x+2][y+2];
-			d = arr[x+3][y+3];
-			tmp = a*b*c*d;
-			if(tmp){
-				printf("The a b c d is %d %d %d %d\r\n", a, b, c, d);
-				printf("The tmp is %d\r\n", tmp);
-				if(tmp>rs){
-					rs = tmp;
+			
+			if(y+3<max){
+				//横着
+				b = arr[x][y+1];
+				c = arr[x][y+2];
+				d = arr[x][y+3];
+				tmp = a*b*c*d;
+				if(tmp){
+
+
+					if(tmp>rs){
+						rs = tmp;
+						//printf("The a b c d is %d %d %d %d\r\n", a, b, c, d);
+						//printf("The tmp is %d\r\n", tmp);
+					}
 				}
+				i++;
+			}
+			//竖着
+			if(x+3<max){
+				b = arr[x+1][y];
+				c = arr[x+2][y];
+				d = arr[x+3][y];
+				tmp = a*b*c*d;
+				if(tmp){
+					if(tmp>rs){
+						rs = tmp;
+						
+						//printf("The a b c d is %d %d %d %d\r\n", a, b, c, d);
+						//printf("The tmp is %d\r\n", tmp);
+					}
+				}
+				i++;
+			}
+			//斜着
+			if(x+3<max && y+3<max){	
+				b = arr[x+1][y+1];
+				c = arr[x+2][y+2];
+				d = arr[x+3][y+3];
+				tmp = a*b*c*d;
+				if(tmp){
+					if(tmp>rs){
+						rs = tmp;
+
+						//printf("The a b c d is %d %d %d %d\r\n", a, b, c, d);
+						//printf("The tmp is %d\r\n", tmp);
+					}
+				}
+				i++;
+			}
+			//反斜着
+			if(x+3< max&& y>2){
+				b = arr[x+1][y-1];
+				c = arr[x+2][y-2];
+				d = arr[x+3][y-3];
+				tmp = a*b*c*d;
+				if(tmp){
+					if(tmp>rs){
+						rs = tmp;
+						printf("The a b c d is %d %d %d %d\r\n", a, b, c, d);
+						printf("The tmp is %d\r\n", tmp);
+					}
+				}
+				i++;
 			}
 			y++; 
 		}
 		x++;
 		y=0;
 	}
+
+
+	printf("The count is %d\r\n", i);
 	printf("The rs is %d\r\n", rs);
 	return 1;
 }
 //看题是硬伤，说了上下左右或者斜着
+//硬伤，除了正着斜，还有反着的
