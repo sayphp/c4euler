@@ -1,39 +1,30 @@
 #include <stdio.h>
 //第一个500个约数的三角分割数
-int isDivisor(int x);
-int num(int x);
+int isDivisor(long int x);
 int main(void){
-	int x = 1000000;
+	long int x = 1;
 	while(x){
-		if(isDivisor(num(x))){
+		if(isDivisor(x)){
 			break;
 		}
-		x++;
+		x = x + x + 1;
+		printf("The x is %ld\r\n", x);
 	}
-	printf("The num is %d\r\n", x);
+	printf("The num is %ld\r\n", x);
 	return 1;
 }
 
-int isDivisor(int x){
-	int i = 0, m = 1;
+int isDivisor(long int x){
+	long int i = 0, m = 1;
 	while(m<x){
 		if(x%m==0){
 			i++;
 		}
 		m++;
 	}
-	printf("The sum is %d\r\n", i);
+	printf("The sum is %ld\r\n", i);
 	if(i>=500){
 		return 1;
 	}
 	return 0;
-}
-
-int num(int x){
-	int r = 0;
-	while(x){
-		r += x;
-		x--;
-	}
-	return r;
 }
