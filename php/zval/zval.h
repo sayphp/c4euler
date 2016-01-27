@@ -4,6 +4,9 @@
  Say
  2016-01-26
  */
+#define IS_NULL '0'
+#define IS_INT '1'
+#define IS_STR '2'
 
 typedef union __zvalue{
 	int num;//支持数字

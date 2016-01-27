@@ -9,10 +9,10 @@ int zval_change(char *str, unsigned char *type, unsigned int count, unsigned cha
 
 	z.refcount__gc = count;
 	z.is_ref__gc = ref;
-	if(z.type=='2'){
+	if(z.type==IS_STR){
 		z.value.str = str;
 	}else{
-		z.value.num = (int)*str;
+		z.value.num = atoi(str);
 	}
 	return 1;
 }
@@ -23,18 +23,19 @@ unsigned char zval_return_type(void){
 }
 
 unsigned char zval_type(char *type){
-	unsigned char r = '1';
-	if(type=="string") r = '2';//字符串
+	unsigned char r = IS_NULL;
+	if(type=="int") r = IS_INT;
+	if(type=="str") r = IS_STR;//字符串
 	return r;
 }
 
 int zval_echo(char *content){
 	zval z;
 	switch(z.type){
-		case '1':
+		case IS_INT:
 			printf("%s%d\r\n", content, z.value.num);
 			break;
-		case '2':
+		case IS_STR:
 			printf("%s%s\r\n", content, z.value.str);
 			break;
 		default:
