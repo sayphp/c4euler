@@ -7,9 +7,11 @@
 #include "zval.h"
 #include "zval.c"
 
+static zval z;
+
 int main(void){
-	zval a;
-	a.type = 'A';
-	printf("The num is %c\r\n", a.type);
+	
+	zval_change("Wow", "string", 1, '0');
+	zval_echo("");
 	return 0;
 }

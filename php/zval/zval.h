@@ -16,3 +16,10 @@ typedef struct __zval{
 	unsigned char type;//zval类型
 	unsigned char is_ref__gc;//是否被重复引用，变量重复赋值时
 } zval;
+
+int zval_change(char *str, unsigned char *type, unsigned int count, unsigned char ref);//变更
+unsigned char zval_type(char *type);//获取类型
+
+unsigned char zval_return_type(void);//返回类型
+
+int zval_echo(char *content);//输出
